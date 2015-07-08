@@ -1,7 +1,7 @@
 {
   "name": "metalsmith-hyphenate",
   "version": "0.0.1",
-  "description": "A Metalsmith plugin to soft hyphenate words.",
+  "description": "A Metalsmith plugin to hyphenate words.",
   "main": "index.js",
   "scripts": {
     "test": "make test"

@@ -19,7 +19,7 @@ var DEFAULT_ELEMENTS = ['p', 'a', 'li', 'ol'];
  * A Metalsmith plugin to add soft hyphens in HTML
  *
  * @param {Object} options (optional)
-  *   @property {Array} [elements=['p', 'a', 'li', 'ol']] - Elements which needs to be hyphenated
+  *   @property {Array} [elements=['p', 'a', 'li', 'ol']] - HTML elements which needs to be hyphenated
   *   @property {Array} [langModule='hyphenation.en-gb'] - Hypher language module(pattern) to use
   * @return {Function}
  */
