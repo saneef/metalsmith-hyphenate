@@ -1,6 +1,6 @@
+/*eslint-env mocha */
 'use strict';
 
-var assert = require('assert');
 var equal = require('assert-dir-equal');
 var metalsmith = require('metalsmith');
 
@@ -12,11 +12,13 @@ function check(name, settings, done) {
   metalsmith(path)
     .use(settings)
     .build(function(err) {
-      if (err) { return done(err); }
+      if (err) {
+        return done(err);
+      }
 
       equal(path + '/expected', path + '/build');
       done();
-    })
+    });
 }
 
 describe('metalsmith-hyphenate', function() {
