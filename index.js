@@ -4,27 +4,40 @@ var debug = require('debug')('metalsmith-hyphenate');
 var extname = require('path').extname;
 var p5 = require('parse5');
 var Hypher = require('hypher');
-var lang_en = require('hyphenation.en-gb');
-
-var h = new Hypher(lang_en);
 
 /**
  * Expose `plugin`.
  */
-
 module.exports = plugin;
+
+/**
+ * Default Elements to hyphenate
+ */
+var DEFAULT_ELEMENTS = ['p', 'a', 'li', 'ol'];
 
 /**
  * A Metalsmith plugin to add soft hyphens in HTML
  *
- * @return {Function}
+ * @param {Object} options (optional)
+  *   @property {Array} [elements=['p', 'a', 'li', 'ol']] - Elements which needs to be hyphenated
+  *   @property {Array} [langModule='hyphenation.en-gb'] - Hypher language module(pattern) to use
+  * @return {Function}
  */
 
-function plugin() {
-  var elements = ['p', 'a', 'li', 'ol'];
+function plugin(options) {
+  options = options || {};
+
+  options.elements = options.elements || DEFAULT_ELEMENTS;
+  options.langModule = options.langModule || 'hyphenation.en-gb';
 
   var parser = new p5.Parser();
   var serializer = new p5.Serializer();
+  try {
+    var hypher = new Hypher(require(options.langModule));
+  } catch (err) {
+    console.log("Language module %s is not installed. Try 'npm install %s'",
+    options.langModule, options.langModule);
+  }
 
   return function(files, metalsmith, done) {
     Object.keys(files).forEach(function(file) {
@@ -55,14 +68,14 @@ function plugin() {
       forceHyphenate = false;
     }
 
-    if (!forceHyphenate && _isPresent(elements, dom.tagName)) {
+    if (!forceHyphenate && _isPresent(options.elements, dom.tagName)) {
       forceHyphenate = true;
     }
 
     if (dom.childNodes != null) {
       dom.childNodes.forEach(function(node) {
         if (node.nodeName === '#text' && forceHyphenate) {
-          node.value = h.hyphenateText(node.value);
+          node.value = hypher.hyphenateText(node.value);
         } else {
           _hyphenateText(node, forceHyphenate);
         }

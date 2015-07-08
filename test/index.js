@@ -21,6 +21,13 @@ function check(name, settings, done) {
 
 describe('metalsmith-hyphenate', function() {
   it('should hyphenate', function(done) {
-    check('basic', metalsmithHyphenate(), done);
+    check('default-settings', metalsmithHyphenate(), done);
+  });
+
+  it('should hyphenate with custom settings', function(done) {
+    check('custom-settings', metalsmithHyphenate({
+      elements: ['blockquote'],
+      langModule: 'hyphenation.de'
+    }), done);
   });
 });
