@@ -20,7 +20,7 @@ var DEFAULT_ELEMENTS = ['p', 'a', 'li', 'ol'];
  *
  * @param {Object} options (optional)
   *   @property {Array} [elements=['p', 'a', 'li', 'ol']] - HTML elements which needs to be hyphenated
-  *   @property {Array} [langModule='hyphenation.en-gb'] - Hypher language module(pattern) to use
+  *   @property {Array} [langModule='hyphenation.en-us'] - Hypher language module(pattern) to use
   * @return {Function}
  */
 
@@ -28,7 +28,7 @@ function plugin(options) {
   options = options || {};
 
   options.elements = options.elements || DEFAULT_ELEMENTS;
-  options.langModule = options.langModule || 'hyphenation.en-gb';
+  options.langModule = options.langModule || 'hyphenation.en-us';
 
   var parser = new p5.Parser();
   var serializer = new p5.Serializer();

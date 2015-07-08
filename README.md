@@ -37,4 +37,4 @@ metalsmith.use(hyphenate({
 ### Options
 
 - `elements` - HTML elements which will be hyphenated. Default is `['p', 'a', 'li', 'ol']`
-- `langModule` - [Hyper](https://github.com/bramstein/Hypher#nodejs) [language pattern](https://github.com/bramstein/hyphenation-patterns) to use. You need to install the language module separately. Default is `'hyphenation.en-gb'`
+- `langModule` - [Hyper](https://github.com/bramstein/Hypher#nodejs) [language pattern](https://github.com/bramstein/hyphenation-patterns) to use. You need to install the language module separately. Default is `'hyphenation.en-us'`
