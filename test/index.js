@@ -32,4 +32,19 @@ describe('metalsmith-hyphenate', function() {
       langModule: 'hyphenation.de'
     }), done);
   });
+
+  it('should ignore files matching a pattern', function(done) {
+    check('ignore-one-folder', metalsmithHyphenate({
+      ignore: 'notes/*'
+    }), done);
+  });
+
+  it('should ignore files matching an array of patterns', function(done) {
+    check('ignore-two-folders', metalsmithHyphenate({
+      ignore: [
+        'notes/*',
+        'blog/*'
+      ]
+    }), done);
+  });
 });

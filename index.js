@@ -4,6 +4,7 @@ var debug = require('debug')('metalsmith-hyphenate');
 var extname = require('path').extname;
 var p5 = require('parse5');
 var Hypher = require('hypher');
+var minimatch = require('minimatch');
 
 /**
  * Default Elements to hyphenate
@@ -16,6 +17,7 @@ var DEFAULT_ELEMENTS = ['p', 'a', 'li', 'ol'];
  * @param {Object} options (optional)
  *   @property {Array} [elements=['p', 'a', 'li', 'ol']] - HTML elements which needs to be hyphenated
  *   @property {Array} [langModule='hyphenation.en-us'] - Hypher language module(pattern) to use
+ *   @property {String|Array} [ignore] - Glob expressions to ignore a file, or a set of files
  * @return {Function}
  */
 
@@ -25,6 +27,11 @@ function plugin(options) {
   options.elements = options.elements || DEFAULT_ELEMENTS;
   options.langModule = options.langModule || 'hyphenation.en-us';
 
+  if ((options.ignore !== undefined) &&
+    (toString.call(options.ignore) === '[object String]')) {
+    options.ignore = [options.ignore];
+  }
+  debug('File ignore glob expressions: %j', options.ignore);
 
   var parser = new p5.Parser();
   var serializer = new p5.Serializer();
@@ -87,11 +94,39 @@ function plugin(options) {
     return dom;
   }
 
+  /**
+   * Check if the file matches the ignore glob patterns
+   *
+   * @param {String} file
+   * @return {Boolean}
+   */
+  function isIgnoredFile(file) {
+    if (options.ignore !== undefined) {
+      var result = false;
+
+      options.ignore.forEach(function(pattern) {
+        if (minimatch(file, pattern)) {
+          result = true;
+          return false;
+        }
+      });
+
+      return result;
+    }
+
+    return false;
+  }
+
   return function(files, metalsmith, done) {
     Object.keys(files).forEach(function(file) {
 
-      debug('checking file: %s', file);
-      if (!isHtml(file)) {
+      debug('checking if file matches ignore patterns: %s', file);
+      if (isIgnoredFile(file) === true) {
+        return;
+      }
+
+      debug('checking if it is an HTML file: %s', file);
+      if (isHtml(file) === false) {
         return;
       }
 
