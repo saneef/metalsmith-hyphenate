@@ -28,7 +28,7 @@ function plugin(options) {
   options.langModule = options.langModule || 'hyphenation.en-us';
 
   if ((options.ignore !== undefined) &&
-    (toString.call(options.ignore) === '[object String]')) {
+    (Object.prototype.toString.call(options.ignore) === '[object String]')) {
     options.ignore = [options.ignore];
   }
   debug('File ignore glob expressions: %j', options.ignore);
@@ -81,7 +81,7 @@ function plugin(options) {
       forceHyphenate = true;
     }
 
-    if (dom.childNodes != null) {
+    if (dom.childNodes !== undefined) {
       dom.childNodes.forEach(function(node) {
         if (node.nodeName === '#text' && forceHyphenate) {
           node.value = hypher.hyphenateText(node.value);

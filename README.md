@@ -1,4 +1,4 @@
-# metalsmith-hyphenate [![Build Status](https://travis-ci.org/saneef/metalsmith-hyphenate.svg?branch=master)](https://travis-ci.org/saneef/metalsmith-hyphenate)
+# metalsmith-hyphenate [![Build Status](https://travis-ci.org/saneef/metalsmith-hyphenate.svg?branch=master)](https://travis-ci.org/saneef/metalsmith-hyphenate) [![Code Climate](https://codeclimate.com/github/saneef/metalsmith-hyphenate/badges/gpa.svg)](https://codeclimate.com/github/saneef/metalsmith-hyphenate)
 
 A Metalsmith plugin to hyphenate words. It’s based on [Bramstein’s](https://github.com/bramstein) [Hyper hyphenation engine](https://github.com/bramstein/Hypher)
 
