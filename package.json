@@ -13,8 +13,9 @@
   },
   "keywords": [
     "metalsmith",
-    "hyphe",
-    "hyphenate"
+    "hyphen",
+    "hyphenate",
+    "hypher"
   ],
   "author": "Saneef Ansari <hello@saneef.com>",
   "license": "MIT",
