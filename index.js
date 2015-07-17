@@ -118,8 +118,9 @@ function plugin(options) {
   }
 
   return function(files, metalsmith, done) {
-    Object.keys(files).forEach(function(file) {
+    setImmediate(done);
 
+    Object.keys(files).forEach(function(file) {
       debug('checking if file matches ignore patterns: %s', file);
       if (isIgnoredFile(file) === true) {
         return;
@@ -135,8 +136,6 @@ function plugin(options) {
       dom = hyphenateText(dom);
       files[file].contents = serializer.serialize(dom);
     });
-
-    done();
   };
 }
 
