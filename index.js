@@ -134,7 +134,7 @@ function plugin(options) {
       debug('hyphenating "%s"', file);
       var dom = parser.parseFragment(files[file].contents.toString());
       dom = hyphenateText(dom);
-      files[file].contents = serializer.serialize(dom);
+      files[file].contents = new Buffer(serializer.serialize(dom));
     });
   };
 }
