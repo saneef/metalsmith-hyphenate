@@ -10,10 +10,12 @@ $ npm install metalsmith-hyphenate
 
 ## Usage
 
+The `metalsmith-hyphenate` work on the HTML files. So, insert this plugin in the pipeline where HTML files are generated; commonly after `metalsmith-templates`.
+
+
 ### CLI
 
-Install via npm and then add the metalsmith-hyphenate key to your metalsmith.json plugins:
-
+Install via `npm` and then add the `metalsmith-hyphenate` to your `metalsmith.json`.
 ```JSON
 {
   "plugins": {
