@@ -69,24 +69,15 @@ function plugin(options) {
    * Traverses throught parsed DOM, and hyphenate text nodes
    *
    * @param {String} domString
-   * @param {Boolean} forceHyphenate
    * @return {String}
    */
-  function hyphenateText(dom, forceHyphenate) {
-    if (forceHyphenate === undefined) {
-      forceHyphenate = false;
-    }
-
-    if (isPresent(options.elements, dom.tagName)) {
-      forceHyphenate = true;
-    }
-
+  function hyphenateText(dom) {
     if (dom.childNodes !== undefined) {
       dom.childNodes.forEach(function(node) {
-        if (node.nodeName === '#text' && forceHyphenate) {
+        if (node.nodeName === '#text' && isPresent(options.elements, dom.tagName)) {
           node.value = hypher.hyphenateText(node.value);
         } else {
-          hyphenateText(node, forceHyphenate);
+          hyphenateText(node);
         }
       });
     }
