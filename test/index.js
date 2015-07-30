@@ -28,7 +28,7 @@ describe('metalsmith-hyphenate', function() {
 
   it('should hyphenate with custom settings', function(done) {
     check('custom-settings', metalsmithHyphenate({
-      elements: ['blockquote'],
+      elements: ['blockquote', 'cite'],
       langModule: 'hyphenation.de'
     }), done);
   });
