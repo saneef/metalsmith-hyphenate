@@ -25,9 +25,10 @@
   "homepage": "https://github.com/saneef/metalsmith-hyphenate",
   "devDependencies": {
     "assert-dir-equal": "^1.0.1",
-    "eslint": "^0.24.0",
+    "eslint": "^1.2.1",
+    "harmonize": "^1.4.4",
     "hyphenation.de": "^0.2.1",
-    "metalsmith": "^1.7.0",
+    "metalsmith": "^2.0.1",
     "mocha": "^2.2.5"
   },
   "dependencies": {

@@ -1,6 +1,9 @@
 /*eslint-env mocha */
 'use strict';
 
+var harmonize = require('harmonize');
+harmonize(); // Refer https://github.com/segmentio/metalsmith/issues/151
+
 var equal = require('assert-dir-equal');
 var metalsmith = require('metalsmith');
 
