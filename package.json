@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-hyphenate",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A Metalsmith plugin to hyphenate words.",
   "main": "index.js",
   "scripts": {
