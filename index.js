@@ -33,9 +33,6 @@ function plugin(options) {
   }
   debug('File ignore glob expressions: %j', options.ignore);
 
-  var parser = new p5.Parser();
-  var serializer = new p5.Serializer();
-
   try {
     var hypher = new Hypher(require(options.langModule));
   } catch (err) {
@@ -123,9 +120,9 @@ function plugin(options) {
       }
 
       debug('hyphenating "%s"', file);
-      var dom = parser.parse(files[file].contents.toString());
+      var dom = p5.parse(files[file].contents.toString());
       dom = hyphenateText(dom);
-      files[file].contents = new Buffer(serializer.serialize(dom));
+      files[file].contents = new Buffer(p5.serialize(dom));
     });
   };
 }
