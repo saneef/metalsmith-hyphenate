@@ -36,6 +36,6 @@
     "hyphenation.en-us": "0.2.1",
     "hypher": "0.2.4",
     "minimatch": "^3.0.0",
-    "parse5": "2.1.0"
+    "parse5": "2.1.1"
   }
 }
