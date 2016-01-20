@@ -120,9 +120,9 @@ function plugin(options) {
       }
 
       debug('hyphenating "%s"', file);
-      var dom = p5.parse(files[file].contents.toString());
-      dom = hyphenateText(dom);
-      files[file].contents = new Buffer(p5.serialize(dom));
+      var doc = p5.parse(files[file].contents.toString());
+      doc = hyphenateText(dom);
+      files[file].contents = new Buffer(p5.serialize(doc.childNodes[0].childNodes[1]));
     });
   };
 }
