@@ -24,18 +24,18 @@
   },
   "homepage": "https://github.com/saneef/metalsmith-hyphenate",
   "devDependencies": {
-    "assert-dir-equal": "1.0.1",
-    "eslint": "1.10.3",
-    "harmonize": "1.4.4",
-    "hyphenation.de": "0.2.1",
-    "metalsmith": "2.1.0",
-    "mocha": "2.4.2"
+    "assert-dir-equal": "~1.0.1",
+    "eslint": "~1.10.3",
+    "harmonize": "~1.4.4",
+    "hyphenation.de": "~0.2.1",
+    "metalsmith": "~2.1.0",
+    "mocha": "~2.4.2"
   },
   "dependencies": {
-    "debug": "2.2.0",
-    "hyphenation.en-us": "0.2.1",
-    "hypher": "0.2.4",
-    "minimatch": "^3.0.0",
-    "parse5": "2.1.4"
+    "debug": "~2.2.0",
+    "hyphenation.en-us": "~0.2.1",
+    "hypher": "~0.2.4",
+    "minimatch": "~3.0.0",
+    "parse5": "~2.1.4"
   }
 }
