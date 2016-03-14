@@ -36,6 +36,14 @@ describe('metalsmith-hyphenate', function() {
     }), done);
   });
 
+  it('should use lang attribute', function(done) {
+    check('multi-lang', metalsmithHyphenate({
+      elements: ['blockquote', 'cite'],
+      langModule: 'hyphenation.de',
+      useLangAttribute: true
+    }), done);
+  });
+
   it('should ignore files matching a pattern', function(done) {
     check('ignore-one-folder', metalsmithHyphenate({
       ignore: 'notes/*'
