@@ -11,6 +11,9 @@ var minimatch = require('minimatch');
  */
 var DEFAULT_ELEMENTS = ['p', 'a', 'li', 'ol'];
 
+var ELEMENT_NODE = 1;
+var TEXT_NODE = 3;
+
 /**
  * A Metalsmith plugin to add soft hyphens in HTML
  *
@@ -26,20 +29,44 @@ function plugin(options) {
 
   options.elements = options.elements || DEFAULT_ELEMENTS;
   options.langModule = options.langModule || 'hyphenation.en-us';
-
+  options.useLangAttribute = options.useLangAttribute || false;
+  
   if ((options.ignore !== undefined) &&
     (Object.prototype.toString.call(options.ignore) === '[object String]')) {
     options.ignore = [options.ignore];
   }
   debug('File ignore glob expressions: %j', options.ignore);
 
-  try {
-    var hypher = new Hypher(require(options.langModule));
-  } catch (err) {
-    console.log("Language module %s is not installed. Try 'npm install %s'",
-      options.langModule, options.langModule);
+  function createHypher(langModule) {
+    try {
+      return new Hypher(require(langModule));
+    } catch (err) {
+      console.log("Language module %s is not installed. Try 'npm install %s'",
+        langModule, langModule);
+    }
   }
 
+  function getHypherByLang(lang) {
+    if (!lang || !options.useLangAttribute) {
+      return hyphersByLang.default;
+    }
+    
+    var hypher = hyphersByLang[lang];
+    
+    if (!hypher) {
+      hypher = createHypher('hyphenation.' + lang);
+      hyphersByLang[lang] = hypher;
+    }
+    
+    return hypher || hyphersByLang.default;
+  }
+
+  var hyphersByLang = {
+    default: createHypher(options.langModule)
+  };
+  
+  var hyphersStack = [hyphersByLang.default];
+  
   /**
    * Check if a `value` is present in the array.
    *
@@ -69,14 +96,35 @@ function plugin(options) {
    * @return {String}
    */
   function hyphenateText(dom) {
-    if (dom.childNodes !== undefined) {
-      dom.childNodes.forEach(function(node) {
-        if (node.nodeName === '#text' && isPresent(options.elements, dom.tagName)) {
-          node.value = hypher.hyphenateText(node.value);
-        } else {
-          hyphenateText(node);
+    var hypher, popHypher = false;
+    
+    if (dom.childNodes === undefined) {
+      return dom;
+    }
+      
+    if (dom.nodeType === ELEMENT_NODE) {
+      var langAttribute = dom.getAttribute('lang');
+      if (langAttribute) {
+        hypher = getHypherByLang(langAttribute);
+        if (hypher) {
+          hyphersStack.push(hypher);            
+          popHypher = true;
         }
-      });
+      }
+    }
+    
+    dom.childNodes.forEach(function(node) {
+      
+      if (node.nodeName === '#text' && isPresent(options.elements, dom.tagName)) {
+        hypher = hyphersStack[hyphersStack.length - 1];
+        node.value = hypher.hyphenateText(node.value);
+      } else {
+        hyphenateText(node);        
+      }
+    });
+
+    if (popHypher) {
+      hyphersStack.pop();
     }
 
     return dom;
