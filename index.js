@@ -96,32 +96,35 @@ function plugin(options) {
    * @return {String}
    */
   function hyphenateText(dom) {
-    if (dom.childNodes !== undefined) {
-      dom.childNodes.forEach(function(node) {
-        var hypher, popHypher = false;
-        
-        if (node.nodeName === '#text' && isPresent(options.elements, dom.tagName)) {
-          hypher = hyphersStack[hyphersStack.length - 1];
-          node.value = hypher.hyphenateText(node.value);
-        } else {
-          if (node.nodeType === ELEMENT_NODE) {
-            var langAttribute = node.getAttribute('lang');
-            if (langAttribute) {
-              hypher = getHypherByLang(langAttribute);
-              if (hypher) {
-                hyphersStack.push(hypher);            
-                popHypher = true;
-              }
-            }
-          }
-          
-          hyphenateText(node);
-          
-          if (popHypher) {
-            hyphersStack.pop();
-          }
+    var hypher, popHypher = false;
+    
+    if (dom.childNodes === undefined) {
+      return dom;
+    }
+      
+    if (dom.nodeType === ELEMENT_NODE) {
+      var langAttribute = dom.getAttribute('lang');
+      if (langAttribute) {
+        hypher = getHypherByLang(langAttribute);
+        if (hypher) {
+          hyphersStack.push(hypher);            
+          popHypher = true;
         }
-      });
+      }
+    }
+    
+    dom.childNodes.forEach(function(node) {
+      
+      if (node.nodeName === '#text' && isPresent(options.elements, dom.tagName)) {
+        hypher = hyphersStack[hyphersStack.length - 1];
+        node.value = hypher.hyphenateText(node.value);
+      } else {
+        hyphenateText(node);        
+      }
+    });
+
+    if (popHypher) {
+      hyphersStack.pop();
     }
 
     return dom;
