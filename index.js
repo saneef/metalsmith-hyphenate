@@ -68,13 +68,13 @@ function plugin(options) {
    * @param {String} domString
    * @return {String}
    */
-  function hyphenateText(dom) {
+  function hyphenateText(dom, forceHyphenateAllChildren) {
     if (dom.childNodes !== undefined) {
       dom.childNodes.forEach(function(node) {
-        if (node.nodeName === '#text' && isPresent(options.elements, dom.tagName)) {
+        if (node.nodeName === '#text' && (forceHyphenateAllChildren || isPresent(options.elements, dom.tagName))) {
           node.value = hypher.hyphenateText(node.value);
         } else {
-          hyphenateText(node);
+          hyphenateText(node, isPresent(options.elements, dom.tagName));
         }
       });
     }
