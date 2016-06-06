@@ -9,13 +9,13 @@ var minimatch = require('minimatch');
 /**
  * Default Elements to hyphenate
  */
-var DEFAULT_ELEMENTS = ['p', 'a', 'li', 'ol'];
+var DEFAULT_ELEMENTS = ['p', 'li', 'ol'];
 
 /**
  * A Metalsmith plugin to add soft hyphens in HTML
  *
  * @param {Object} options (optional)
- *   @property {Array} [elements=['p', 'a', 'li', 'ol']] - HTML elements which needs to be hyphenated
+ *   @property {Array} [elements=['p', 'li', 'ol']] - HTML elements which needs to be hyphenated
  *   @property {Array} [langModule='hyphenation.en-us'] - Hypher language module(pattern) to use
  *   @property {String|Array} [ignore] - Glob expressions to ignore a file, or a set of files
  * @return {Function}

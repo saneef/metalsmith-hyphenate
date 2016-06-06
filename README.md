@@ -44,6 +44,6 @@ metalsmith.use(hyphenate({
 
 ### Options
 
-- `elements` - (Array) HTML elements which will be hyphenated. Default is `['p', 'a', 'li', 'ol']`
+- `elements` - (Array) HTML elements which will be hyphenated. Default is `['p', 'li', 'ol']`
 - `langModule` - (String) [Hypher](https://github.com/bramstein/Hypher#nodejs) [language rules](https://github.com/bramstein/hyphenation-patterns) to be used for hyphenation. Default is `'hyphenation.en-us'`. You need to install manually — `npm install <language-module>` – if you are going to use any language rule other than the default.
 - `ignore` - (Array | String) You can use glob patterns to ignore some files.
