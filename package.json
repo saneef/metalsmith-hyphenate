@@ -25,7 +25,7 @@
   "homepage": "https://github.com/saneef/metalsmith-hyphenate",
   "devDependencies": {
     "assert-dir-equal": "~1.0.1",
-    "eslint": "~3.5.0",
+    "eslint": "~3.7.1",
     "harmonize": "~1.4.4",
     "hyphenation.de": "~0.2.1",
     "metalsmith": "~2.2.0",
@@ -35,7 +35,7 @@
     "debug": "~2.2.0",
     "hyphenation.en-us": "~0.2.1",
     "hypher": "~0.2.4",
-    "minimatch": "~3.0.0",
-    "parse5": "~2.2.0"
+    "minimatch": "~3.0.3",
+    "parse5": "~2.2.2"
   }
 }
