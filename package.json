@@ -28,7 +28,7 @@
     "eslint": "~3.8.0",
     "harmonize": "~1.4.4",
     "hyphenation.de": "~0.2.1",
-    "metalsmith": "~2.2.0",
+    "metalsmith": "~2.3.0",
     "mocha": "~3.1.1"
   },
   "dependencies": {
