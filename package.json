@@ -32,7 +32,7 @@
     "mocha": "~3.2.0"
   },
   "dependencies": {
-    "debug": "~2.3.0",
+    "debug": "~2.4.5",
     "hyphenation.en-us": "~0.2.1",
     "hypher": "~0.2.4",
     "minimatch": "~3.0.3",
