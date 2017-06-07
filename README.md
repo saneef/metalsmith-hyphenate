@@ -1,5 +1,7 @@
 # metalsmith-hyphenate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/saneef/metalsmith-hyphenate.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/saneef/metalsmith-hyphenate.svg?branch=master)](https://travis-ci.org/saneef/metalsmith-hyphenate) [![Code Climate](https://codeclimate.com/github/saneef/metalsmith-hyphenate/badges/gpa.svg)](https://codeclimate.com/github/saneef/metalsmith-hyphenate) [![Dependency Status](https://gemnasium.com/saneef/metalsmith-hyphenate.svg)](https://gemnasium.com/saneef/metalsmith-hyphenate)
 
 
