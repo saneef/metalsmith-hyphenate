@@ -29,13 +29,13 @@
     "harmonize": "~2.0.0",
     "hyphenation.de": "~0.2.1",
     "metalsmith": "~2.3.0",
-    "mocha": "~3.4.1"
+    "mocha": "~3.4.2"
   },
   "dependencies": {
-    "debug": "~2.6.0",
+    "debug": "~2.6.8",
     "hyphenation.en-us": "~0.2.1",
     "hypher": "~0.2.5",
-    "minimatch": "~3.0.3",
-    "parse5": "~3.0.1"
+    "minimatch": "~3.0.4",
+    "parse5": "~3.0.2"
   }
 }
