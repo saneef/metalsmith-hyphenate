@@ -31,7 +31,7 @@
     "hyphenation.de": "~0.2.1",
     "metalsmith": "~2.3.0",
     "mocha": "~3.5.0",
-    "semantic-release": "^7.0.1"
+    "semantic-release": "^8.0.0"
   },
   "dependencies": {
     "debug": "~3.0.0",
