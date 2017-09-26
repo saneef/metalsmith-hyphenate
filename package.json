@@ -34,7 +34,7 @@
     "semantic-release": "^8.0.0"
   },
   "dependencies": {
-    "debug": "~3.0.0",
+    "debug": "~3.1.0",
     "hyphenation.en-us": "~0.2.1",
     "hypher": "~0.2.5",
     "minimatch": "~3.0.4",
