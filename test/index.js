@@ -50,4 +50,8 @@ describe('metalsmith-hyphenate', function() {
       ]
     }), done);
   });
+
+  it('should ignore an element', function(done) {
+    check('ignore-element-by-attribute', metalsmithHyphenate(), done);
+  });
 });

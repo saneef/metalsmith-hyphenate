@@ -12,6 +12,11 @@ var minimatch = require('minimatch');
 var DEFAULT_ELEMENTS = ['p', 'li', 'ol'];
 
 /**
+ * Data attribute name
+ */
+var HYPHENATE_DATA_ATTR = 'data-hyphenate';
+
+/**
  * A Metalsmith plugin to add soft hyphens in HTML
  *
  * @param {Object} options (optional)
@@ -71,7 +76,7 @@ function plugin(options) {
   function hyphenateText(dom, forceHyphenateAllChildren) {
     if (dom.childNodes !== undefined) {
       dom.childNodes.forEach(function(node) {
-        if (node.nodeName === '#text' && (forceHyphenateAllChildren || isPresent(options.elements, dom.tagName))) {
+        if (node.nodeName === '#text' && !isSkippable(node) && (forceHyphenateAllChildren || isPresent(options.elements, dom.tagName))) {
           node.value = hypher.hyphenateText(node.value);
         } else {
           hyphenateText(node, isPresent(options.elements, dom.tagName));
@@ -81,6 +86,25 @@ function plugin(options) {
 
     return dom;
   }
+
+  /**
+   * Check if the node is marked for skip
+   *
+   * @param {String} DOM node
+   * @return {Boolean}
+   */
+   function isSkippable(node) {
+    var result = false;
+    if (node && node.parentNode && node.parentNode.attrs && Array.isArray(node.parentNode.attrs)) {
+      node.parentNode.attrs.forEach(function(attr) {
+        if (attr.name && attr.value && attr.name === HYPHENATE_DATA_ATTR && attr.value === 'false') {
+          result = true;
+        }
+      });
+    }
+
+    return result;
+   }
 
   /**
    * Check if the file matches the ignore glob patterns

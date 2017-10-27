@@ -47,3 +47,11 @@ metalsmith.use(hyphenate({
 - `elements` - (Array) HTML elements which will be hyphenated. Default is `['p', 'li', 'ol']`
 - `langModule` - (String) [Hypher](https://github.com/bramstein/Hypher#nodejs) [language rules](https://github.com/bramstein/hyphenation-patterns) to be used for hyphenation. Default is `'hyphenation.en-us'`. You need to install manually — `npm install <language-module>` – if you are going to use any language rule other than the default.
 - `ignore` - (Array | String) You can use glob patterns to ignore some files.
+
+### Disable hyphenation on specific elements
+
+Hyphenation can be disabled on an element by annotating the element or any of its ancestors with `data-hyphenate="false"`.
+
+```html
+<p data-hyphenate="false">There now is your insular city of the Manhattoes, belted round by wharves as Indian isles by coral reefs—commerce surrounds it with her surf.</p>
+```
