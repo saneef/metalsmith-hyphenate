@@ -6,7 +6,8 @@
   "scripts": {
     "test": "make test",
     "lint": "make lint",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,8 @@
     "hyphenation.de": "~0.2.1",
     "metalsmith": "~2.3.0",
     "mocha": "~5.0.0",
-    "semantic-release": "^12.2.2"
+    "semantic-release": "^12.4.1",
+    "travis-deploy-once": "^4.3.4"
   },
   "dependencies": {
     "debug": "~3.1.0",
