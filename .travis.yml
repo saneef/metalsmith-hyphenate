@@ -6,7 +6,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - 'nodejs'
+  - 'node'
   - 'lts/*'
 before_script:
   - npm prune
