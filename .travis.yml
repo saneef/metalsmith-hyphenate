@@ -8,9 +8,10 @@ notifications:
 node_js:
   - 'node'
   - 'lts/*'
+install: npm install
 before_install:
   - npm install -g npm
-  - npm install -g greenkeeper-lockfile@1
+  - npm install -g greenkeeper-lockfile
 before_script:
   - npm prune
   - greenkeeper-lockfile-update
