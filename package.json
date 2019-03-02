@@ -32,8 +32,8 @@
     "hyphenation.de": "~0.2.1",
     "metalsmith": "~2.3.0",
     "mocha": "~6.0.0",
-    "semantic-release": "^15.0.0",
-    "travis-deploy-once": "^5.0.0"
+    "semantic-release": "^15.13.4",
+    "travis-deploy-once": "^5.0.11"
   },
   "dependencies": {
     "debug": "~4.1.0",
