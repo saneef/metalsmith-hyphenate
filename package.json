@@ -31,7 +31,7 @@
     "harmonize": "~2.0.0",
     "hyphenation.de": "~0.2.1",
     "metalsmith": "~2.3.0",
-    "mocha": "~6.2.0",
+    "mocha": "~7.1.2",
     "semantic-release": "^17.0.4",
     "travis-deploy-once": "^5.0.11"
   },
