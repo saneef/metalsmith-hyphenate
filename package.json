@@ -39,7 +39,7 @@
     "debug": "~4.1.0",
     "hyphenation.en-us": "~0.2.1",
     "hypher": "~0.2.5",
-    "minimatch": "~3.0.4",
+    "minimatch": "~3.0.5",
     "parse5": "~5.1.1"
   }
 }
